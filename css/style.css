@@ -1,0 +1,160 @@
+body {
+}
+
+
+.pagination {
+    float: left;
+    
+    border: 1px solid #CDCDCD;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.pagination a {
+    display: block;
+    float: left;
+    height: 20px;
+    width: 20px;
+    background-color: rgb(0,50,75);
+    color: #555555;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    outline: none;
+    vertical-align: middle;
+    
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(221,221,221)),
+        color-stop(1, rgb(243,243,243))
+        );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgb(221,221,221) 0%,
+        rgb(243,243,243) 100%    
+        );
+    
+}
+
+.pagination a:hover {
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #CECECE),
+        color-stop(1, #E4E4E4)
+        );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        #CECECE 0%,
+        #E4E4E4 100%    
+        );
+}
+
+.pagination a.first {
+    -webkit-border-radius: 2px 0 0 2px;
+    -moz-border-radius: 2px 0 0 2px;
+}
+.pagination a.last {
+    -webkit-border-radius: 0 2px 2px 0;
+    -moz-border-radius: 0 2px 2px 0;
+}
+.pagination a.previous,
+.pagination a.first {
+    border-right: 1px solid #CDCDCD;   
+}
+.pagination a.next,
+.pagination a.last {
+    border-left: 1px solid #CDCDCD;
+}
+
+.pagination a:focus {
+     color: pink;   
+}
+
+.pagination input {
+    border: none;
+    float: left;
+    text-align: center;
+    height: 20px;
+    outline: none;
+    vertical-align: middle;
+    width: 120px;
+}
+
+.buttons.group {
+    
+    font-family: 'Lucida Grande';
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    
+    float: left;
+    border: 1px solid #CDCDCD;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin-left: 15px;
+    
+}
+
+.buttons.group a {
+    
+    border-right: 1px solid #CDCDCD;
+    display: block;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    background-color: rgb(0,50,75);
+    color: #555555;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    vertical-align: middle;
+    width: 50px;
+    
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(221,221,221)),
+        color-stop(1, rgb(243,243,243))
+        );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgb(221,221,221) 0%,
+        rgb(243,243,243) 100%    
+        );
+    
+}
+
+.buttons.group a:hover {
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #CECECE),
+        color-stop(1, #E4E4E4)
+        );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        #CECECE 0%,
+        #E4E4E4 100%    
+        );
+    
+}
+
+.buttons.group a:last-child {
+    border-right: none;
+    
+    -webkit-border-radius: 0 1px 1px 0;
+    -moz-border-radius: 0 1px 1px 0;
+}
+
+.buttons.group a:first-child {
+    -webkit-border-radius: 1px 0 0 1px;
+    -moz-border-radius: 1px 0 0 1px; 
+}
