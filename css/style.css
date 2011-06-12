@@ -82,6 +82,8 @@ body {
     outline: none;
     vertical-align: middle;
     width: 120px;
+	padding: 0;
+	margin: 0;
 }
 
 .buttons.group {
