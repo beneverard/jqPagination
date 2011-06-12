@@ -15,28 +15,33 @@
 
 			base.options = $.extend({},$.uzPagination.defaultOptions, options);
 			
-			// set a few vars
-			var page_string, current_page, max_page;
+			// get input jQuery object
+			var $input = base.$el.find('input');
 			
-			var input = $('input', base.$el);
-		
-			current_page	=	input.data('current-page');
-			max_page		=	input.data('max-page');
-			page_string		=	'Page ' + current_page + ' of ' + max_page;
-		
-			input.val(page_string);
-		
-			input.live('mouseup',function() {
-				var self = $(this);
-				self.val(self.data('current-page')).select();
-			});
+			// init a few vars
+			var current_page	=	$input.data('current-page'),
+				max_page		=	$input.data('max-page')
+				page_string		=	'Page ' + current_page + ' of ' + max_page;
 			
-			input.live('focus',function() {
-				var self = $(this);
-				self.val(self.data('current-page')).select();
+			// set the value of the input
+			$input.val(page_string);
+		
+			$input.live('focus mouseup', function(event) {
+			
+				// if event == focus, select all text...
+				if (event.type == 'focusin') {
+					var self = $(this);
+					self.val(self.data('current-page')).select();
+				}
+			
+				// if event == mouse up, return false. Fixes Chrome bug
+				if (event.type == 'mouseup') {
+					return false;
+				}
+				
 			});
 		
-			input.live('blur',function() {
+			$input.live('blur',function() {
 				var self = $(this);
 				var page = self.val();
 		
@@ -45,13 +50,11 @@
 				if (IsNumeric(page) && (page > 0 && page <= max_page)) {
 					self.val('Page ' + page + ' of ' + max_page);
 					self.data('current-page', page);
-				} else {
-					self.val('Page ' + self.data('prev-page') + ' of ' + max_page);
-				}
+				} else $input
 		
 			});
 			
-		   	input.live('keydown',function(event) {
+		   	$input.live('keydown',function(event) {
 				if (event.keyCode == '13') {
 					$(this).blur();
 				}
@@ -60,7 +63,7 @@
 			base.$el.find('.next').live('click', function(event) {
 				event.preventDefault();
 		
-				var current_page = input.data('current-page');
+				var current_page = $input.data('current-page');
 		
 				if (current_page >= max_page) {
 					return false;
@@ -68,16 +71,16 @@
 		
 				var page = parseInt(current_page,10) + 1;
 		
-				input.val('Page ' + page + ' of ' + max_page);
+				$input.val('Page ' + page + ' of ' + max_page);
 		
-				input.data('current-page', page);
+				$input.data('current-page', page);
 		
 			});
 		
 			base.$el.find('.previous').live('click', function(event) {
 				event.preventDefault();
 		
-				var current_page = input.data('current-page');
+				var current_page = $input.data('current-page');
 		
 				if (current_page <= 1) {
 					return false;
@@ -85,27 +88,27 @@
 		
 				var page = parseInt(current_page,10) - 1;
 		
-				input.val('Page ' + page + ' of ' + max_page);
+				$input.val('Page ' + page + ' of ' + max_page);
 		
-				input.data('current-page', page);
+				$input.data('current-page', page);
 		
 			});
 		
 			base.$el.find('.first').live('click', function(event) {
 				event.preventDefault();
 		
-				input.val('Page 1 of ' + max_page);
+				$input.val('Page 1 of ' + max_page);
 		
-				input.data('current-page', 1);
+				$input.data('current-page', 1);
 		
 			});
 		
 			base.$el.find('.last').live('click', function(event) {
 				event.preventDefault();
 		
-				input.val('Page ' + max_page + ' of ' + max_page);
+				$input.val('Page ' + max_page + ' of ' + max_page);
 		
-				input.data('current-page', max_page);
+				$input.data('current-page', max_page);
 		
 			});
 	
