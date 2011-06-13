@@ -1,3 +1,12 @@
+/*
+
+Inspiration for the layout came from these designs and colours:
+
+http://dribbble.com/shots/22707-Tender-Pagination
+http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
+
+*/
+
 (function($){
 	$.uzPagination = function(el, options){
 		// To avoid scope issues, use 'base' instead of 'this'
@@ -7,6 +16,9 @@
 		// Access to jQuery and DOM versions of element
 		base.$el = $(el);
 		base.el = el;
+		
+		// get input jQuery object
+		base.$input = base.$el.find('input');
 
 		// Add a reverse reference to the DOM object
 		base.$el.data("uzPagination", base);
@@ -15,18 +27,17 @@
 
 			base.options = $.extend({},$.uzPagination.defaultOptions, options);
 			
-			// get input jQuery object
-			var $input = base.$el.find('input');
-			
 			// init a few vars
-			var current_page	=	$input.data('current-page'),
-				max_page		=	$input.data('max-page')
+			// ATTN: should this be in the default options?
+			// ATTM: also
+			var current_page	=	base.options.current_page,
+				max_page		=	base.options.max_page,
 				page_string		=	'Page ' + current_page + ' of ' + max_page;
 			
 			// set the value of the input
-			$input.val(page_string);
+			base.$input.val(page_string);
 		
-			$input.live('focus mouseup', function(event) {
+			base.$input.live('focus mouseup', function(event) {
 			
 				// if event == focus, select all text...
 				if (event.type == 'focusin') {
@@ -40,92 +51,90 @@
 				}
 				
 			});
-		
-			$input.live('blur',function() {
-				var self = $(this);
-				var page = self.val();
-		
-				self.data('prev-page', self.data('current-page'));
-		
-				if (IsNumeric(page) && (page > 0 && page <= max_page)) {
-					self.val('Page ' + page + ' of ' + max_page);
-					self.data('current-page', page);
-				} else $input
-		
-			});
 			
-		   	$input.live('keydown',function(event) {
-				if (event.keyCode == '13') {
+			
+			base.$input.live('blur keydown',function(event) {
+
+				// only fire if the enter/return key is pressed or focusout event occurs
+				if (event.keyCode=='13' || event.type==='focusout') {
+					base.setPage($(this).val());
+					
+					// ATTN: we're bluring inside a potential blur event... is that a good idea?
 					$(this).blur();
 				}
+				
 			});
-		
-			base.$el.find('.next').live('click', function(event) {
+			
+			base.$el.find('a').live('click', function(event) {
 				event.preventDefault();
-		
-				var current_page = $input.data('current-page');
-		
-				if (current_page >= max_page) {
-					return false;
-				}
-		
-				var page = parseInt(current_page,10) + 1;
-		
-				$input.val('Page ' + page + ' of ' + max_page);
-		
-				$input.data('current-page', page);
-		
+				base.setPage($(this).data('action'));
 			});
-		
-			base.$el.find('.previous').live('click', function(event) {
-				event.preventDefault();
-		
-				var current_page = $input.data('current-page');
-		
-				if (current_page <= 1) {
-					return false;
-				}
-		
-				var page = parseInt(current_page,10) - 1;
-		
-				$input.val('Page ' + page + ' of ' + max_page);
-		
-				$input.data('current-page', page);
-		
-			});
-		
-			base.$el.find('.first').live('click', function(event) {
-				event.preventDefault();
-		
-				$input.val('Page 1 of ' + max_page);
-		
-				$input.data('current-page', 1);
-		
-			});
-		
-			base.$el.find('.last').live('click', function(event) {
-				event.preventDefault();
-		
-				$input.val('Page ' + max_page + ' of ' + max_page);
-		
-				$input.data('current-page', max_page);
-		
-			});
-	
-			// Put your initialization code here
+			
 		};
-
-		// Sample Function, Uncomment to use
-		// base.functionName = function(paramaters){
-		//
-		// };
 		
+		base.setPage = function(page){
+			
+			var current_page	= parseInt(base.options.current_page,10),
+				max_page		= base.options.max_page,
+				page_string		= base.options.page_string;
+			
+			if(!IsNumeric(page)) {
+				
+				switch(page) {
+				
+					case 'first':
+						page = 1;
+						break;
+						
+					case 'prev':
+					case 'previous':
+						page = --current_page;					
+						break;
+						
+					case 'next':
+						page = ++current_page;
+						break;
+						
+					case 'last':
+						page = max_page;
+						break;
+				
+				}
+				
+			}
+			
+			if(!IsNumeric(page) || page<1 || page>max_page) {
+				return false;
+			}
+			
+			// set the current page
+			base.setCurrentPage(page);
+						
+			// this looks horrible :-(
+			page_string=page_string.replace("{current_page}", page)
+								   .replace("{max_page}", max_page);
+					   
+			base.$input.val(page_string);
+		
+			base.options.paged(page);
+			
+		};
+		
+		base.setCurrentPage = function(page) {
+			base.options.current_page=page;
+			base.$input.data('current-page', page);
+		};
+				
 		// Run initializer
 		base.init();
+		
 	};
 
 	$.uzPagination.defaultOptions = {
-		radius: "20px"
+		page_string		:	'Page {current_page} of {max_page}',
+		current_page	:	1,
+		max_page		:	1,
+		paged			:	function() {}
 	};
 
 	$.fn.uzPagination = function(options){
@@ -140,3 +149,19 @@
 	};
 
 })(jQuery);
+
+function bIsNumeric(input) {
+    return (input - 0) == input && input.length > 0;
+}
+
+function IsNumeric(val) {
+
+    if (isNaN(parseFloat(val))) {
+
+          return false;
+
+     }
+
+     return true
+
+}
