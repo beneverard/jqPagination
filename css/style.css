@@ -38,7 +38,7 @@ body {
     
 }
 
-.pagination a:hover {
+.pagination a:hover, .pagination a:focus, .pagination a:active {
     background-image: -webkit-gradient(
         linear,
         left bottom,
@@ -70,10 +70,6 @@ body {
 }
 .pagination a:last-child {
     border: none;
-}
-
-.pagination a:focus {
-     color: pink;   
 }
 
 .pagination input {
