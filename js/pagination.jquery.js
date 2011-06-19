@@ -103,8 +103,10 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 				
 			}
 			
-			if(!IsNumeric(page) || page<1 || page>max_page) {
-				return false;
+			// if we're dealing with an invalid page value, use the current page
+			// we cannot simply exit the script as we've already cleared the input
+			if(!IsNumeric(page) || page<1 || page>max_page || page=='') {			
+				page=base.options.current_page;
 			}
 			
 			// set the current page
