@@ -39,8 +39,8 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			
 				// if event === focus, select all text...
 				if (event.type === 'focusin') {
-					var self = $(this);
-					self.val(self.data('current-page')).select();
+					var $self = $(this);
+					$self.val($self.data('current-page')).select();
 				}
 			
 				// if event === mouse up, return false. Fixes Chrome bug
