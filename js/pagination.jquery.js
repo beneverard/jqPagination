@@ -49,7 +49,7 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			});
 			
 			base.$input.live('blur keydown',function(event) {
-
+				
 				// if the user hits enter, trigger blur event but DO NOT set the page value
 				if(event.keyCode=='13') {
 					$(this).blur();
@@ -71,9 +71,7 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 		
 		base.setPage = function(page){
 						
-			var current_page	= parseInt(base.options.current_page,10),
-				max_page		= base.options.max_page,
-				page_string		= base.options.page_string;
+			var current_page = parseInt(base.options.current_page,10);
 			
 			if(!IsNumeric(page)) {
 				
@@ -102,20 +100,26 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			
 			// if we're dealing with an invalid page value, use the current page
 			// we cannot simply exit the script as we've already cleared the input
-			if(!IsNumeric(page) || page<1 || page>max_page || page=='') {			
-				page=current_page;
+			if(!IsNumeric(page) || page<1 || page>base.options.max_page || page=='' || page==current_page) {
+				
+				// set the current page
+				base.setCurrentPage(current_page);
+				
+				// just set the value back to the current page 
+				base.setInputValue(current_page);
+								
+			} else {
+				
+				// set the current page
+				base.setCurrentPage(page);
+				
+				// set the input value
+				base.setInputValue(page);
+				
+				// fire the callback function with the current page
+				base.options.paged(page);
+				
 			}
-			
-			// set the current page
-			base.setCurrentPage(page);
-						
-			// this looks horrible :-(
-			page_string=page_string.replace("{current_page}", page)
-								   .replace("{max_page}", max_page);
-					   
-			base.$input.val(page_string);
-		
-			base.options.paged(page);
 			
 		};
 		
@@ -123,7 +127,20 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			base.options.current_page=page;
 			base.$input.data('current-page', page);
 		};
-				
+		
+		base.setInputValue = function(page) {
+		
+			var page_string	= base.options.page_string,
+				max_page	= base.options.max_page;
+	
+			// this looks horrible :-(
+			page_string=page_string.replace("{current_page}", page)
+								   .replace("{max_page}", max_page);
+					   
+			base.$input.val(page_string);
+		
+		}
+						
 		// Run initializer
 		base.init();
 		
