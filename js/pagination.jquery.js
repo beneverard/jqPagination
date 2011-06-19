@@ -53,7 +53,7 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			base.$input.live('blur keydown', function (event) {
 				
 				// if the user hits enter, trigger blur event but DO NOT set the page value
-				if (event.keyCode === 13 ) {
+				if (event.keyCode === 13) {
 					$(this).blur();
 				}
 
