@@ -70,7 +70,7 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 		};
 		
 		base.setPage = function(page){
-			
+						
 			var current_page	= parseInt(base.options.current_page,10),
 				max_page		= base.options.max_page,
 				page_string		= base.options.page_string;
@@ -103,7 +103,7 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			// if we're dealing with an invalid page value, use the current page
 			// we cannot simply exit the script as we've already cleared the input
 			if(!IsNumeric(page) || page<1 || page>max_page || page=='') {			
-				page=base.options.current_page;
+				page=current_page;
 			}
 			
 			// set the current page
