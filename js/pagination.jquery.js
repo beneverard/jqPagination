@@ -48,15 +48,16 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 				
 			});
 			
-			
 			base.$input.live('blur keydown',function(event) {
 
-				// only fire if the enter/return key is pressed or focusout event occurs
-				if (event.keyCode=='13' || event.type==='focusout') {
-					base.setPage($(this).val());
-					
-					// ATTN: we're bluring inside a potential blur event... is that a good idea?
+				// if the user hits enter, trigger blur event but DO NOT set the page value
+				if(event.keyCode=='13') {
 					$(this).blur();
+				}
+
+				// only set the page is the event is focusout.. aka blue
+				if (event.type==='focusout') {
+					base.setPage($(this).val());
 				}
 				
 			});
