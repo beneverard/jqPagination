@@ -27,16 +27,12 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 
 			base.options = $.extend({},$.uzPagination.defaultOptions, options);
 			
-			// init a few vars
-			// ATTN: should this be in the default options?
-			// ATTM: also
-			var current_page	=	base.options.current_page,
-				max_page		=	base.options.max_page,
-				page_string		=	'Page ' + current_page + ' of ' + max_page;
+			// set the initial input value
+			base.setPage();
 			
-			// set the value of the input
-			base.$input.val(page_string);
-		
+			 //***************
+			// BIND EVENTS
+			
 			base.$input.live('focus mouseup', function(event) {
 			
 				// if event == focus, select all text...
