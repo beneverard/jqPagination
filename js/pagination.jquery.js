@@ -7,16 +7,6 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 
 */
 
-function isNumeric(val) {
-	"use strict";
-
-	if (isNaN(parseFloat(val))) {
-		return false;
-	}
-	return true;
-
-}
-
 (function ($) {
 	"use strict";
 	
@@ -63,7 +53,7 @@ function isNumeric(val) {
 			base.$input.live('blur keydown', function (event) {
 				
 				// if the user hits enter, trigger blur event but DO NOT set the page value
-				if (event.keyCode === '13') {
+				if (event.keyCode === 13 ) {
 					$(this).blur();
 				}
 
@@ -86,7 +76,7 @@ function isNumeric(val) {
 			var current_page	= parseInt(base.options.current_page, 10),
 				max_page		= parseInt(base.options.max_page, 10);
 			
-			if (!isNumeric(page)) {
+			if (isNaN(parseInt(page, 10))) {
 				
 				switch (page) {
 				case 'first':
@@ -94,10 +84,10 @@ function isNumeric(val) {
 					break;
 				case 'prev':
 				case 'previous':
-					page = current_page -= 1;					
+					page = current_page - 1;					
 					break;
 				case 'next':
-					page = current_page += 1;
+					page = current_page + 1;
 					break;
 				case 'last':
 					page = max_page;
@@ -106,9 +96,11 @@ function isNumeric(val) {
 				
 			}
 			
+			page = parseInt(page, 10);
+			
 			// if we're dealing with an invalid page value, use the current page
 			// we cannot simply exit the script as we've already cleared the input
-			if (!isNumeric(page) || page < 1 || page > max_page || page === '' || page === current_page) {
+			if (isNaN(page) || page < 1 || page > max_page || page === current_page) {
 				
 				// set the current page
 				base.setCurrentPage(current_page);
