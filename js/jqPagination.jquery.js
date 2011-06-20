@@ -175,7 +175,7 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 				
 				// apply each page number to the link string, set it back to the element href attribute				
 				base.$el.find('a.first').attr('href', link_string.replace('{page_number}', '1'));
-				base.$el.find('a.previous').attr('href', link_string.replace('{page_number}', previous));
+				base.$el.find('a.prev, a.previous').attr('href', link_string.replace('{page_number}', previous));
 				base.$el.find('a.next').attr('href', link_string.replace('{page_number}', next));
 				base.$el.find('a.last').attr('href', link_string.replace('{page_number}', max_page));
 				
@@ -189,10 +189,10 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 	};
 
 	$.uzPagination.defaultOptions = {
-		page_string		:	'Page {current_page} of {max_page}',
-		link_string		:	'',
 		current_page	:	1,
+		link_string		:	'',
 		max_page		:	1,
+		page_string		:	'Page {current_page} of {max_page}',
 		paged			:	function () {}
 	};
 
