@@ -2,7 +2,10 @@
 <html dir="ltr" lang="en-US">
 	<head>
 	
-		<!-- styles -->
+		<!-- generic demo style -->
+		<link rel="stylesheet" href="_demo/css/demo.css" />
+	
+		<!-- jqPagination styles -->
 		<link rel="stylesheet" href="css/style.css" />
 		
 		<!-- scripts -->
@@ -10,14 +13,43 @@
 		<script src="js/jqPagination.jquery.js"></script>
 		<script src="js/scripts.js"></script>
 		
-	</head> 
-	<body> 
-		<div class="pagination">
-		    <a href="#" data-action="first">&laquo;</a>
-		    <a href="#" data-action="previous">&lsaquo;</a>
-		    <input type="text" />
-		    <a href="#" data-action="next">&rsaquo;</a>
-		    <a href="#" data-action="last">&raquo;</a>
+		<!-- generic demo script -->
+		<script src="_demo/js/demo.js"></script>
+		
+	</head>
+	<body>
+		<!-- NOTE: the _demo directory is for styles / scripts that relate to this example page and not the plugin itself. :-) -->
+		<div id="wrapper">
+			<header>
+				<h1>jqPagination</h1>
+				<h2>a jQuery pagination plugin (obviously)</h2>
+			</header>
+			<p>jqPagination is a jQuery plugin that gives a slightly different spin on pagination. This pagination method revolves around a main input that allows the user to enter the page they want to be warped to, thus avoiding the usual long list of page numbers. The plugin handles first, previous, next and last links, these can be removed if desired.</p>
+			<h3>A quick demo...</h3>
+			<p>It's oversized too, so you can try it when you're drunk!</p>
+			<div class="gigantic pagination">
+			    <a href="#" data-action="first">&laquo;</a>
+			    <a href="#" data-action="previous">&lsaquo;</a>
+			    <input type="text" />
+			    <a href="#" data-action="next">&rsaquo;</a>
+			    <a href="#" data-action="last">&raquo;</a>
+			</div>
+			<div class="clearfix"></div> <!-- should probably have a shower after that -->
+			<p><a href="#" class="show-log">Show / hide event log:</a></p>
+			<ul class="log"></ul>
+			<h3>Hit me with some facts!</h3>
+			<ul>
+				<li>Design agnostic</li>
+				<li>Customisable</li>
+				<li>Degrades beautifully</li>
+				<li>Super simple to integrate with your app / site</li>
+				<li>Uses jQuery... who doesn't love jQuery!?</li>
+			</ul>
+			<h3>What made made you think of this method?</h3>
+			<p>Strangely the method we currently use for our ERP application mixes an input element for the desired page and a span for the ' of 4 pages' bit... and this looks really bad when the webpage was printed and was difficult to style in general, considering the text was shared between two elements.</p>
+			<h3>So you came up with the concept on your own?</h3>
+			<p>Definitely not, I was inspired by something <a href="http://dribbble.com/shots/22707-Tender-Pagination">Chris Rhee had Dribbbled</a>, I liked the idea of pagination that had no huge list of numbers, made it very clear to the user what page they were on but also allowed them to enter a very specific and accurate page to jump to. The design I put together was also inspired by the colours in this <a href="http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-">Dribbble by Shaun Moynihan</a></p>
+			<h3></h3>
 		</div>
 	</body> 
 </html>
