@@ -161,16 +161,14 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			
 			if (link_string !== '') {
 				
-				// set initial page numbers
-				var previous	= current_page - 1,
-					next		= current_page + 1;
-				
-				// check to make sure the page numbers aren't out of range
+				// set initial page numbers + make sure the page numbers aren't out of range
 					
+				var previous = current_page - 1;
 				if (previous < 1) {
 					previous = 1;
 				}
 				
+				var next = current_page + 1;
 				if (next > max_page) {
 					next = max_page;
 				}
