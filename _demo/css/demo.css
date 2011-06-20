@@ -1,0 +1,104 @@
+body {
+  font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+}
+/* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements in most situations.
+   nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
+p,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 15px 0;
+}
+ul {
+  list-style: disc;
+  margin-left: 25px;
+}
+ul li {
+  margin: 5px 0;
+}
+#contents {
+  list-style: none;
+}
+#contents ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+/* headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  margin: 25px 0 15px 0;
+}
+h1 {
+  font-size: 55px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 25px;
+}
+h4 {
+  font-size: 20px;
+}
+p {
+  line-height: 25px;
+}
+header {
+  margin-bottom: 60px;
+}
+header h1 {
+  margin-bottom: 5px;
+}
+header h2 {
+  margin-top: 0;
+  margin-left: 30px;
+}
+strong {
+  font-weight: 700;
+}
+.log {
+  display: none;
+  background-color: #EDEDED;
+  border: 1px solid grey;
+  height: 300px;
+  width: 524px;
+  overflow: auto;
+  margin-left: 0;
+  list-style: none;
+  padding: 10px;
+}
+.log li {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.syntaxhighlighter {
+  border: 1px solid lightgrey;
+  padding: 10px;
+}
+#wrapper {
+  padding: 20px;
+  width: 800px;
+  margin: 0 auto;
+}
