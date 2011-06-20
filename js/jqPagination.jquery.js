@@ -65,8 +65,13 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			});
 			
 			base.$el.find('a').live('click', function (event) {
-				event.preventDefault();
-				base.setPage($(this).data('action'));
+			
+				// for mac + windows (read: other), maintain the cmd + ctrl click for new tab
+				if (!event.metaKey && !event.ctrlKey) {
+					event.preventDefault();
+					base.setPage($(this).data('action'));
+				}
+				
 			});
 			
 		};
