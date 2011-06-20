@@ -29,6 +29,9 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 
 			base.options = $.extend({}, $.uzPagination.defaultOptions, options);
 			
+			// we only want the input disabled if javascript is having problems
+			base.$input.removeAttr('disabled');
+			
 			// set the initial input value
 			base.setPage();
 			
@@ -65,8 +68,13 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			});
 			
 			base.$el.find('a').live('click', function (event) {
-				event.preventDefault();
-				base.setPage($(this).data('action'));
+			
+				// for mac + windows (read: other), maintain the cmd + ctrl click for new tab
+				if (!event.metaKey && !event.ctrlKey) {
+					event.preventDefault();
+					base.setPage($(this).data('action'));
+				}
+				
 			});
 			
 		};
@@ -116,6 +124,9 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 				// set the input value
 				base.setInputValue(page);
 				
+				// set the link href attributes
+				base.setLinks(page);
+				
 				// fire the callback function with the current page
 				base.options.paged(page);
 				
@@ -141,6 +152,38 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			base.$input.val(page_string);
 		
 		};
+		
+		base.setLinks = function (page) {
+			
+			var link_string		= base.options.link_string,
+				current_page	= parseInt(base.options.current_page, 10),
+				max_page		= parseInt(base.options.max_page, 10);
+			
+			if (link_string !== '') {
+				
+				// set initial page numbers
+				var previous	= current_page - 1,
+					next		= current_page + 1;
+				
+				// check to make sure the page numbers aren't out of range
+					
+				if (previous < 1) {
+					previous = 1;
+				}
+				
+				if (next > max_page) {
+					next = max_page;
+				}
+				
+				// apply each page number to the link string, set it back to the element href attribute				
+				base.$el.find('a.first').attr('href', link_string.replace('{page_number}', '1'));
+				base.$el.find('a.previous').attr('href', link_string.replace('{page_number}', previous));
+				base.$el.find('a.next').attr('href', link_string.replace('{page_number}', next));
+				base.$el.find('a.last').attr('href', link_string.replace('{page_number}', max_page));
+				
+			}
+			
+		};
 						
 		// Run initializer
 		base.init();
@@ -149,6 +192,7 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 
 	$.uzPagination.defaultOptions = {
 		page_string		:	'Page {current_page} of {max_page}',
+		link_string		:	'',
 		current_page	:	1,
 		max_page		:	1,
 		paged			:	function () {}
