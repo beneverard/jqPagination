@@ -29,6 +29,9 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 
 			base.options = $.extend({}, $.uzPagination.defaultOptions, options);
 			
+			// we only want the input disabled if javascript is having problems
+			base.$input.removeAttr('disabled');
+			
 			// set the initial input value
 			base.setPage();
 			
