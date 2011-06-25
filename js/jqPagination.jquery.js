@@ -55,14 +55,23 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 			
 			base.$input.live('blur keydown', function (event) {
 				
+				var $self			= $(this),
+					current_page	= parseInt(base.options.current_page, 10);
+				
+				// if the user hits escape revert the input back to the original value
+				if (event.keyCode === 27) {
+					$self.val(current_page);
+					$self.blur();
+				}
+				
 				// if the user hits enter, trigger blur event but DO NOT set the page value
 				if (event.keyCode === 13) {
-					$(this).blur();
+					$self.blur();
 				}
 
 				// only set the page is the event is focusout.. aka blue
 				if (event.type === 'focusout') {
-					base.setPage($(this).val());
+					base.setPage($self.val());
 				}
 				
 			});
