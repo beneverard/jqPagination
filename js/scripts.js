@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('.pagination').uzPagination({
+	$('.pagination').jqPagination({
 		link_string	: '/?page={page_number}',
 		max_page	: 40,
 		paged		: function(page) {
