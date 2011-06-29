@@ -1,16 +1,27 @@
-/*
-
-Inspiration for the layout came from these designs and colours:
-
-http://dribbble.com/shots/22707-Tender-Pagination
-http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
-
-*/
+/*!
+ * jqPagination, a jQeury pagination plugin (obviously)
+ *
+ * Copyright (C) 2011 Ben Everard
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *     
+ */
 
 (function ($) {
 	"use strict";
 	
-	$.uzPagination = function (el, options) {
+	$.jqPagination = function (el, options) {
 		// To avoid scope issues, use 'base' instead of 'this'
 		// to reference this class from internal events and functions.
 		var base = this;
@@ -23,11 +34,11 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 		base.$input = base.$el.find('input');
 
 		// Add a reverse reference to the DOM object
-		base.$el.data("uzPagination", base);
+		base.$el.data("jqPagination", base);
 
 		base.init = function () {
 
-			base.options = $.extend({}, $.uzPagination.defaultOptions, options);
+			base.options = $.extend({}, $.jqPagination.defaultOptions, options);
 			
 			// we only want the input disabled if javascript is having problems
 			base.$input.removeAttr('disabled');
@@ -197,7 +208,7 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 		
 	};
 
-	$.uzPagination.defaultOptions = {
+	$.jqPagination.defaultOptions = {
 		current_page	:	1,
 		link_string		:	'',
 		max_page		:	1,
@@ -205,9 +216,10 @@ http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-
 		paged			:	function () {}
 	};
 
-	$.fn.uzPagination = function (options) {
+	$.fn.jqPagination = function (options) {
+		
 		return this.each(function () {
-			(new $.uzPagination(this, options));
+			(new $.jqPagination(this, options));
 			
 		});
 	};
