@@ -40,8 +40,8 @@
 
 			base.options = $.extend({}, $.jqPagination.defaultOptions, options);
 			
-			// we only want the input disabled if javascript is having problems
-			base.$input.removeAttr('disabled');
+			// remove the readonly attribute as JavaScript must be working by now ;-)			
+			base.$input.removeAttr('readonly');
 			
 			// set the initial input value
 			base.setPage();
