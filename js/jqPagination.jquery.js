@@ -217,8 +217,6 @@
 	};
 
 	$.fn.jqPagination = function (options) {
-	
-			return "hello";
 		
 		return this.each(function () {
 			(new $.jqPagination(this, options));
