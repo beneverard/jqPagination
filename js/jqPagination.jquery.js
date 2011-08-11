@@ -1,5 +1,5 @@
 /*!
- * jqPagination, a jQeury pagination plugin (obviously)
+ * jqPagination, a jQuery pagination plugin (obviously)
  *
  * Copyright (C) 2011 Ben Everard
  *
@@ -32,6 +32,19 @@
 		
 		// get input jQuery object
 		base.$input = base.$el.find('input');
+		
+		// if the user hasn't provided a max page number in the options try and find 
+		// the data attribute for it, if that cannot be found, use one as a max page number
+					
+		if (base.options.max_page === null) {
+		
+			if (base.$input.data('max-page') !== undefined) {
+				base.options.max_page = base.$input.data('max-page');
+			} else {
+				base.options.max_page = 1;
+			}
+			
+		}	
 
 		// Add a reverse reference to the DOM object
 		base.$el.data("jqPagination", base);
