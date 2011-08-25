@@ -32,26 +32,26 @@
 		
 		// get input jQuery object
 		base.$input = base.$el.find('input');
-		
-		// if the user hasn't provided a max page number in the options try and find 
-		// the data attribute for it, if that cannot be found, use one as a max page number
-					
-		if (base.options.max_page === null) {
-		
-			if (base.$input.data('max-page') !== undefined) {
-				base.options.max_page = base.$input.data('max-page');
-			} else {
-				base.options.max_page = 1;
-			}
-			
-		}	
 
 		// Add a reverse reference to the DOM object
 		base.$el.data("jqPagination", base);
 
 		base.init = function () {
 
-			base.options = $.extend({}, $.jqPagination.defaultOptions, options);
+			base.options = $.extend({}, $.jqPagination.defaultOptions, options);				
+			
+			// if the user hasn't provided a max page number in the options try and find 
+			// the data attribute for it, if that cannot be found, use one as a max page number
+			
+			if (base.options.max_page === null) {
+			
+				if (base.$input.data('max-page') !== undefined) {
+					base.options.max_page = base.$input.data('max-page');
+				} else {
+					base.options.max_page = 1;
+				}
+				
+			}
 			
 			// remove the readonly attribute as JavaScript must be working by now ;-)			
 			base.$input.removeAttr('readonly');
@@ -222,11 +222,11 @@
 	};
 
 	$.jqPagination.defaultOptions = {
-		current_page	:	1,
-		link_string		:	'',
-		max_page		:	1,
-		page_string		:	'Page {current_page} of {max_page}',
-		paged			:	function () {}
+		current_page	: 1,
+		link_string		: '',
+		max_page		: null,
+		page_string		: 'Page {current_page} of {max_page}',
+		paged			: function () {}
 	};
 
 	$.fn.jqPagination = function (options) {
