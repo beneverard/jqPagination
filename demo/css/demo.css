@@ -1,7 +1,8 @@
 body {
-  font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-weight: 300;
+  color: rgba(0, 0, 0, 0.8);
 }
 /* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements in most situations.
    nicolasgallagher.com/micro-clearfix-hack/ */
@@ -15,34 +16,6 @@ body {
 .clearfix {
   zoom: 1;
 }
-p,
-ul,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 15px 0;
-}
-small {
-  font-size: 70%;
-}
-ul {
-  list-style: disc;
-  margin-left: 25px;
-}
-ul li {
-  margin: 5px 0;
-}
-#contents {
-  list-style: none;
-}
-#contents ul {
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style: none;
-}
 /* headings */
 h1,
 h2,
@@ -50,23 +23,117 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
-  margin: 25px 0 15px 0;
+  margin: 30px 0 15px 0;
 }
 h1 {
   font-size: 55px;
 }
 h2 {
+  border-bottom: 1px solid #DFDFDF;
   font-size: 30px;
 }
 h3 {
-  font-size: 25px;
+  font-size: 20px;
 }
 h4 {
   font-size: 20px;
 }
 p {
-  line-height: 25px;
+  margin: 20px 0;
+  line-height: 30px;
+}
+small {
+  font-size: 70%;
+}
+ul {
+  list-style: disc;
+  margin: 20px 0 20px 25px;
+}
+ul li {
+  margin: 5px 0;
+}
+strong {
+  font-weight: 700;
+}
+code {
+  background-color: #EEEEEE;
+  padding: 4px;
+  margin: -4px 0;
+}
+pre {
+  background-color: #EFEFEF;
+  border: 1px solid #B4B4B4;
+  padding: 10px;
+  line-height: 18px;
+  font-size: 14px;
+  font-family: monospace;
+}
+#header {
+  background-color: yellow;
+  background-image: -webkit-linear-gradient(#004d9f, #049cd9);
+  -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  color: white;
+  height: 250px;
+  position: relative;
+  border-bottom: 1px solid #DEDEDE;
+}
+#header-wrapper {
+  width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+#header-wrapper h1, #header-wrapper h2, #header-wrapper p {
+  margin: 0;
+}
+#header-wrapper h1 {
+  position: absolute;
+  top: 40px;
+}
+#header-wrapper h2 {
+  position: absolute;
+  top: 110px;
+  left: 40px;
+  border-bottom: none;
+}
+#header-wrapper p {
+  margin: 0;
+  position: absolute;
+  top: 180px;
+  font-weight: bold;
+}
+#header-wrapper a {
+  text-decoration: none;
+  color: white;
+  font-weight: normal;
+}
+#header-wrapper a:hover, #header-wrapper a:active, #header-wrapper a:focus {
+  text-decoration: underline;
+}
+#footer {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+#footer .gradient {
+  height: 10px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, transparent), color-stop(1, rgba(0, 0, 0, 0.1)));
+  background-image: -moz-linear-gradient(center bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  bottom: 0;
+  width: 100%;
+}
+#footer-wrapper {
+  font-size: 14px;
+  width: 900px;
+  padding: 20px 20px 30px 20px;
+  margin: 0 auto;
+}
+#footer-wrapper p {
+  margin: 0;
+}
+#footer-wrapper a {
+  color: white;
 }
 header {
   margin-bottom: 60px;
@@ -78,30 +145,8 @@ header h2 {
   margin-top: 0;
   margin-left: 30px;
 }
-strong {
-  font-weight: 700;
-}
-.log {
-  display: none;
-  background-color: #EDEDED;
-  border: 1px solid grey;
-  height: 300px;
-  width: 524px;
-  overflow: auto;
-  margin-left: 0;
-  list-style: none;
-  padding: 10px;
-}
-.log li {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-.syntaxhighlighter {
-  border: 1px solid lightgrey;
-  padding: 10px;
-}
 #wrapper {
   padding: 20px;
-  width: 800px;
+  width: 900px;
   margin: 0 auto;
 }
