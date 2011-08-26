@@ -24,39 +24,78 @@
 		
 	</head>
 	<body>
-		<!-- NOTE: the _demo directory is for styles / scripts that relate to this example page and not the plugin itself. :-) -->
-		<div id="wrapper">
-			<a href="http://github.com/beneverard/jqPagination"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://d3nwyuy0nl342s.cloudfront.net/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
-			<header>
+		<a href="http://github.com/beneverard/jqPagination"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 123;" src="https://d3nwyuy0nl342s.cloudfront.net/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+		<div id="header">
+			<div id="header-wrapper">
 				<h1>jqPagination</h1>
-				<h2>a jQuery pagination plugin (obviously)</h2>
-			</header>
-			<p>jqPagination is a jQuery plugin that gives a slightly different spin on pagination. This pagination method revolves around a main input that allows the user to enter the page they want to be warped to, thus avoiding the usual long list of page numbers. The plugin handles first, previous, next and last links, these can be removed if desired.</p>
-			<h3>A quick demo...</h3>
-			<p>It's oversized too, so you can try it when you're drunk!</p>
-			<div class="gigantic pagination">
-			    <a href="/?first" class="first" data-action="first">&laquo;</a>
-			    <a href="/?previous" class="previous" data-action="previous">&lsaquo;</a>
-			    <input type="text" readonly="readonly" value="Page 1 of 40" />
-			    <a href="/?next" class="next" data-action="next">&rsaquo;</a>
-			    <a href="/?last" class="last" data-action="last">&raquo;</a>
+				<h2>A jQuery pagination plugin (obviously)</h2>
+				<p><a href="#intro">Introduction</a> | <a href="#demo">Demo</a> | <a href="#installation">Installation</a> |  <a href="#customisation">Customisation</a> | <a href="#screencast">Screencast</a> | <a href="#feedback">Feedback</a></p>
 			</div>
-			<div class="clearfix"></div> <!-- should probably have a shower after that -->
-			<p><a href="#" class="show-log">Show / hide event log:</a></p>
-			<ul class="log"></ul>
-			<h3>Hit me with some facts!</h3>
+			<div class="gradient">&nbsp;</div>
+		</div>
+		<div id="wrapper">
+			<h2 id="intro">Introduction</h2>
+			<p>jqPagination is a jQuery plugin that provides a newer method of pagination for your web site or application. Instead of displaying a list of page numbers like traditional pagination methods jqPagination uses an interactive 'Page 1 of 5' input that, when selected, allows the user to enter their desired page number. The plugin will ensure that only valid pages can be selected, a valid request will result in the paged callback. First, previous, next and last buttons work out of the box, but are optional.</p>
+			<p>Here are a few key points:</p>
 			<ul>
 				<li>Design agnostic</li>
 				<li>Customisable</li>
 				<li>Degrades beautifully</li>
 				<li>Super simple to integrate with your app / site</li>
-				<li>Uses jQuery... who doesn't love jQuery!?</li>
+				<li>Uses jQuery... who doesn't love jQuery?!</li>
 			</ul>
-			<h3>What made you think of this method?</h3>
-			<p>Strangely the method we currently use for our ERP application mixes an input element for the desired page and a span for the ' of 4 pages' bit... and this looks really bad when the webpage was printed and was difficult to style in general, considering the text was shared between two elements.</p>
-			<h3>So you came up with the concept on your own?</h3>
-			<p>Definitely not, I was inspired by something <a href="http://dribbble.com/shots/22707-Tender-Pagination">Chris Rhee had Dribbbled</a>, I liked the idea of pagination that had no huge list of numbers, made it very clear to the user what page they were on but also allowed them to enter a very specific and accurate page to jump to. The design I put together was also inspired by the colours in this <a href="http://dribbble.com/shots/59234-Pagination-for-upcoming-blog-">Dribbble by Shaun Moynihan</a></p>
-			<h3></h3>
+			<h2 id="demo">Demo</h2>
+			<p>It's oversized too, so you can try it when you're drunk!</p>
+			<div class="gigantic pagination">
+			    <a href="#" class="first" data-action="first">&laquo;</a>
+			    <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+			    <input type="text" readonly="readonly" />
+			    <a href="#" class="next" data-action="next">&rsaquo;</a>
+			    <a href="#" class="last" data-action="last">&raquo;</a>
+			</div>
+			<div class="clearfix"></div> <!-- should probably have a shower after that -->
+			<p><a href="#" class="show-log">Show / hide event log:</a></p>
+			<ul class="log"></ul>
+			<h2 id="installation">Installation</h2>
+			<p>Installation is super easy, for a basic setup you'll need the following HTML:</p>
+<pre>&lt;div class=&quot;pagination&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;first&quot; data-action=&quot;first&quot;&gt;&amp;laquo;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;previous&quot; data-action=&quot;previous&quot;&gt;&amp;lsaquo;&lt;/a&gt;
+    &lt;input type=&quot;text&quot; readonly=&quot;readonly&quot; data-max-page=&quot;40&quot; /&gt;
+    &lt;a href=&quot;#&quot; class=&quot;next&quot; data-action=&quot;next&quot;&gt;&amp;rsaquo;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;last&quot; data-action=&quot;last&quot;&gt;&amp;raquo;&lt;/a&gt;
+&lt;/div&gt;</pre>
+			<p>And now we'll need to initialise the plugin against our HTML:</p>
+<pre>$('.pagination').jqPagination({
+    paged: function(page) {
+        // do something with the page variable
+    }
+});</pre>
+			<h2 id="customisation">Customisation</h2>
+			<p>jqPagination is built to be basic, but it does have a couple options and callbacks for customisation.</p>
+			<h3>Options</h3>
+			<p><strong>current_page</strong> - option, default: 1
+			<br />Sets the current page, can also be set using the <code>current-page</code> data attribute on the input element.</p>
+			<p><strong>max_page</strong> - option, default: null
+			<br />Sets the maximum page, if this option is left null we'll use the <code>max-page</code> data attribute instead, if that doesn't exist we'll assume we only have one page.</p>
+			<p><strong>page_string</strong> - option, default: 'Page {current_page} of {max_page}'
+			<br />The string to base the input value on, no restrictions on the string, use <code>{current_page}</code> and <code>{max_page}</code> placeholders to allow the plugin to replace the respective numbers.</p>
+			<h3>Callbacks</h3>
+			<p><strong>paged</strong> - callback, params: page
+			<br />The paged callback is called when a valid page request has been made, the page variable simply contains the page requested.</p>
+			<h2 id="screencast">Screencast</h2>
+			<h2 id="feedback">Feedback</h2>
+			<p>We're all on the planet to learn, if you feel improvements can be made to jqPagination <a href="mailto:hello@beneverard.co.uk">drop me an email</a>, <a href="http://twitter.com/ilmv">tweet me</a> or <a href="http://github.com/beneverard/jqPagination/">fork the project</a> and put in a pull request. If you want to report a bug head on over to the <a href="https://github.com/beneverard/jqPagination/issues">GitHub issues page</a>.</p>
 		</div>
-	</body> 
+		<div id="footer">
+			<div class="gradient">&nbsp;</div>
+			<div id="footer-wrapper">
+				<p>&copy; Ben Everard 2011. <a href="http://twitter.github.com/bootstrap/">Design Inspired by the Twitter Bootstrap Design</a></p>
+			</div>
+		</div>
+		<script type="text/javascript" src="http://www.observerapp.com/record.js"></script>
+		<script type="text/javascript">
+			try { Observerapp.record("4e57994f9c529e395d014904"); } catch(e) {};
+		</script>
+	</body>
 </html>
