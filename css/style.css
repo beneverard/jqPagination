@@ -106,3 +106,21 @@
 	height: 60px;
 	font-size: 30px;
 }
+
+/* log element for demo purposes */
+
+.log {
+	display: none;
+	background-color: #EDEDED;
+	border: 1px solid #B4B4B4;
+	height: 300px;
+	width: 524px;
+	overflow: auto;
+	margin-left: 0;
+	list-style: none;
+	padding: 10px;
+	li {
+		margin-top: 0;
+		margin-bottom: 5px;
+	}
+}
