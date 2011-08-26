@@ -53,6 +53,13 @@
 				
 			}
 			
+			// if the current-page data attribute is specified this takes priority
+			// over the options passed in
+			
+			if (base.$input.data('current-page') !== undefined) {
+				base.options.current_page = base.$input.data('current-page');
+			}
+			
 			// remove the readonly attribute as JavaScript must be working by now ;-)			
 			base.$input.removeAttr('readonly');
 			
