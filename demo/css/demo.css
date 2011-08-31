@@ -69,16 +69,20 @@ pre {
   font-family: monospace;
 }
 #header {
-  background-color: yellow;
-  background-image: -webkit-linear-gradient(#004d9f, #049cd9);
-  -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  background: #000000 url(../images/bg.jpg) repeat;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   color: white;
   height: 250px;
   position: relative;
   border-bottom: 1px solid #DEDEDE;
+}
+#header .gradient {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.2)), color-stop(1, transparent));
+  background-image: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
 }
 #header-wrapper {
   width: 900px;
@@ -114,12 +118,12 @@ pre {
 }
 #footer {
   color: white;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: #000000 url(../images/bg.jpg) repeat;
 }
 #footer .gradient {
   height: 10px;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, transparent), color-stop(1, rgba(0, 0, 0, 0.1)));
-  background-image: -moz-linear-gradient(center bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, transparent), color-stop(2, rgba(0, 0, 0, 0.1)));
+  background-image: -moz-linear-gradient(center bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
   bottom: 0;
   width: 100%;
 }
