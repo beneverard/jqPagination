@@ -56,9 +56,9 @@
 			}
 			
 			// if the current-page data attribute is specified this takes priority
-			// over the options passed in
+			// over the options passed in, so long as it's a number
 			
-			if (base.$input.data('current-page') !== undefined) {
+			if (base.$input.data('current-page') !== undefined && base.isNumber(base.$input.data('current-page'))) {
 				base.options.current_page = base.$input.data('current-page');
 			}
 			
@@ -193,6 +193,10 @@
 					   
 			base.$input.val(page_string);
 		
+		};
+		
+		base.isNumber = function(n) {
+			return !isNaN(parseFloat(n)) && isFinite(n);
 		};
 		
 		base.setLinks = function (page) {
