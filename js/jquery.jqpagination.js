@@ -102,7 +102,7 @@
 					$self.blur();
 				}
 
-				// only set the page is the event is focusout.. aka blue
+				// only set the page is the event is focusout.. aka blur
 				if (event.type === 'focusout') {
 					base.setPage($self.val());
 				}
