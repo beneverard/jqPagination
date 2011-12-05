@@ -66,7 +66,15 @@
 			base.$input.removeAttr('readonly');
 			
 			// set the initial input value
-			base.setPage();
+			if(window.location.hash !== '' && base.options.url_hash !== '') {
+				var url_hash_string = base.options.url_hash.replace('{page_number}', '');				
+				var initPage = window.location.hash.replace(url_hash_string, '')
+				base.setPage( initPage );					
+				// maybe add hashchange plugin, http://benalman.com/projects/jquery-hashchange-plugin/
+			} else {
+				base.setPage();			
+			}
+			
 			
 			 //***************
 			// BIND EVENTS
@@ -144,7 +152,7 @@
 					break;
 				}
 				
-			}
+			}			
 			
 			page = parseInt(page, 10);
 			
@@ -177,8 +185,13 @@
 		};
 		
 		base.setCurrentPage = function (page) {
+			var url_hash = base.options.url_hash;
+			
 			base.options.current_page = page;
 			base.$input.data('current-page', page);
+			
+			// set url hash
+			if(url_hash !== '') window.location.hash = url_hash.replace("{page_number}", page);
 		};
 		
 		base.setInputValue = function (page) {
