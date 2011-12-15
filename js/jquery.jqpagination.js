@@ -55,6 +55,10 @@
 				
 			}
 			
+			if (base.options.paged) {
+				base.$el.bind('jqPagination-paged', base.options.paged);
+			}
+			
 			// if the current-page data attribute is specified this takes priority
 			// over the options passed in, so long as it's a number
 			
@@ -170,11 +174,21 @@
 				base.setLinks(page);
 				
 				// fire the callback function with the current page
-				base.options.paged(page);
+				base.trigger('paged',page);
 				
 			}
 			
 		};
+		
+		base.trigger = function () {
+			var args = [],
+				i, len;
+
+			for(i = 0, len = arguments.length; i < len; i++){
+				args.push(arguments[i]);
+			}
+			base.$el.trigger('jqPagination-'+args.shift(), args);
+		}
 		
 		base.setCurrentPage = function (page) {
 			base.options.current_page = page;
@@ -239,7 +253,7 @@
 		link_string		: '',
 		max_page		: null,
 		page_string		: 'Page {current_page} of {max_page}',
-		paged			: function () {}
+		paged			: null
 	};
 
 	$.fn.jqPagination = function (options) {
