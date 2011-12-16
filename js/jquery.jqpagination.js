@@ -118,7 +118,8 @@
 				}
 				
 			});
-			
+
+			base.setLinks();			
 		};
 		
 		base.setPage = function (page) {
@@ -167,7 +168,7 @@
 				base.setInputValue(page);
 				
 				// set the link href attributes
-				base.setLinks(page);
+				base.setLinks();
 				
 				// fire the callback function with the current page
 				base.options.paged(page);
@@ -199,7 +200,7 @@
 			return !isNaN(parseFloat(n)) && isFinite(n);
 		};
 		
-		base.setLinks = function (page) {
+		base.setLinks = function () {
 			
 			var link_string		= base.options.link_string,
 				current_page	= parseInt(base.options.current_page, 10),
@@ -225,6 +226,12 @@
 				base.$el.find('a.next').attr('href', link_string.replace('{page_number}', next));
 				base.$el.find('a.last').attr('href', link_string.replace('{page_number}', max_page));
 				
+				base.$el.find('a').removeClass('disabled');
+				if(current_page <= 1){
+					base.$el.find('a.first, a.prev, a.previous').addClass('disabled').removeAttr('href');
+				}else if(current_page >= max_page){
+					base.$el.find('a.next, a.last').addClass('disabled').removeAttr('href');
+				}
 			}
 			
 		};

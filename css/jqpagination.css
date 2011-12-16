@@ -75,6 +75,24 @@
 .pagination a:last-child {
 	border: none;
 }
+.pagination a.disabled{
+	color:#CCC;
+	cursor:default;
+}
+.pagination a.disabled:hover{
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(221,221,221)),
+		color-stop(1, rgb(243,243,243))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(221,221,221) 0%,
+		rgb(243,243,243) 100%	
+	);
+}
 
 .pagination input {
 	border: none;
