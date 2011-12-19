@@ -243,10 +243,19 @@
 	};
 
 	$.fn.jqPagination = function (options) {
+		var args = arguments;
 		
 		return this.each(function () {
-			(new $.jqPagination(this, options));
-			
+			var plugin = $(this).data('jqPagination');
+			if(plugin && typeof options === 'string'){
+				switch(options){
+					case 'page':
+						plugin.setPage(args[1]);
+						break;
+				}
+			}else{
+				(new $.jqPagination(this, options));
+			}
 		});
 	};
 
