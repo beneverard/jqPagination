@@ -307,14 +307,22 @@
 	$.fn.jqPagination = function () {
 
 		// get any function parameters
-		var args	= Array.prototype.slice.call(arguments),
-			$plugin	= $(this).data('jqPagination');
+		var args = Array.prototype.slice.call(arguments);
 
 		// if the first arg is the string 'option' we want to get or set an option
 		// note: we can only do this to a single element, and not a collection of elements
 
 		if (args[0] === 'option') {
+			
+			// if we're dealing with multiple elements, set this to the first element
+			if (this.length > 1) {
+				this = this.eq(0);
+			}
+
+			var $plugin = $(this).data('jqPagination');
+
 			return $plugin.option(args[1], args[2]);
+
 		}
 
 		// if we're not dealing with a get / set option, initialise plugin
