@@ -24,8 +24,10 @@
 	"use strict";
 	
 	$.jqPagination = function (el, options) {
+	
 		// To avoid scope issues, use 'base' instead of 'this'
 		// to reference this class from internal events and functions.
+	
 		var base = this;
 
 		// Access to jQuery and DOM versions of element
@@ -66,7 +68,7 @@
 			base.$input.removeAttr('readonly');
 			
 			// set the initial input value
-			base.setPage();
+			base.updateInput();
 			
 			 //***************
 			// BIND EVENTS
@@ -122,63 +124,103 @@
 		};
 		
 		base.setPage = function (page) {
-						
+			
+			// return current_page value if getting instead of setting
+			if (page === undefined) {
+				return base.options.current_page;
+			}
+		
 			var current_page	= parseInt(base.options.current_page, 10),
 				max_page		= parseInt(base.options.max_page, 10);
-			
+							
 			if (isNaN(parseInt(page, 10))) {
 				
 				switch (page) {
-				case 'first':
-					page = 1;
-					break;
-				case 'prev':
-				case 'previous':
-					page = current_page - 1;					
-					break;
-				case 'next':
-					page = current_page + 1;
-					break;
-				case 'last':
-					page = max_page;
-					break;
+				
+					case 'first':
+						page = 1;
+						break;
+						
+					case 'prev':
+					case 'previous':
+						page = current_page - 1;					
+						break;
+						
+					case 'next':
+						page = current_page + 1;
+						break;
+						
+					case 'last':
+						page = max_page;
+						break;
+						
 				}
 				
 			}
 			
 			page = parseInt(page, 10);
 			
-			// if we're dealing with an invalid page value, use the current page
-			// we cannot simply exit the script as we've already cleared the input
+			// reject any invalid page requests
 			if (isNaN(page) || page < 1 || page > max_page || page === current_page) {
-				
-				// set the current page
-				base.setCurrentPage(current_page);
-				
-				// just set the value back to the current page 
+			
+				// update the input element
 				base.setInputValue(current_page);
-								
-			} else {
 				
-				// set the current page
-				base.setCurrentPage(page);
-				
-				// set the input value
-				base.setInputValue(page);
-				
-				// set the link href attributes
-				base.setLinks(page);
-				
-				// fire the callback function with the current page
-				base.options.paged(page);
+				return false;
 				
 			}
 			
-		};
-		
-		base.setCurrentPage = function (page) {
+			// update current page options
 			base.options.current_page = page;
 			base.$input.data('current-page', page);
+			
+			// update the input element
+			base.updateInput();
+			
+		}
+		
+		base.setMaxPage = function (max_page) {
+			
+			// return the max_page value if getting instead of setting
+			if (max_page === undefined) {
+				return base.options.max_page;
+			}
+
+			// ignore if max_page is not a number
+			if (!base.isNumber(max_page)) {
+				console.error('jqPagination: max_page is not a number');
+				return false;
+			}
+			
+			// ignore if max_page is less than the current_page
+			if (max_page < base.options.current_page) {
+				console.error('jqPagination: max_page lower than current_page');
+				return false;
+			}
+			
+			// set max_page options
+			base.options.max_page = max_page;
+			base.$input.data('max-page', max_page);
+				
+			// update the input element
+			base.updateInput();
+			
+		}
+		
+		// ATTN this isn't really the correct name is it?
+		base.updateInput = function () {
+			
+			var current_page = parseInt(base.options.current_page, 10);
+							
+			// set the input value
+			base.setInputValue(current_page);
+			
+			// set the link href attributes
+			base.setLinks(current_page);
+			
+			// fire the callback function with the current page
+			base.options.paged(current_page);
+			
 		};
 		
 		base.setInputValue = function (page) {
@@ -228,7 +270,27 @@
 			}
 			
 		};
-						
+		
+		base.option = function (key, value) {
+
+			// call the appropriate function for the desired key (read: option)
+			switch (key.toLowerCase()) {
+			
+				case 'current_page':
+					return base.setPage(value);
+					
+				case 'max_page':
+					return base.setMaxPage(value);
+				
+			}
+
+			// if we haven't already returned yet we must not be able to access the desired option
+			console.error('jqPagination: cannot get / set option ' + key);
+			
+			return false;
+
+		}
+
 		// Run initializer
 		base.init();
 		
@@ -242,21 +304,24 @@
 		paged			: function () {}
 	};
 
-	$.fn.jqPagination = function (options) {
-		var args = arguments;
-		
-		return this.each(function () {
-			var plugin = $(this).data('jqPagination');
-			if(plugin && typeof options === 'string'){
-				switch(options){
-					case 'page':
-						plugin.setPage(args[1]);
-						break;
-				}
-			}else{
-				(new $.jqPagination(this, options));
-			}
+	$.fn.jqPagination = function () {
+
+		// get any function parameters
+		var args	= Array.prototype.slice.call(arguments),
+			$plugin	= $(this).data('jqPagination');
+
+		// if the first arg is the string 'option' we want to get or set an option
+		// note: we can only do this to a single element, and not a collection of elements
+
+		if (args[0] === 'option') {
+			return $plugin.option(args[1], args[2]);
+		}
+
+		// if we're not dealing with a get / set option, initialise plugin
+		this.each(function () {
+			(new $.jqPagination(this, args[0]));
 		});
+		
 	};
 
 })(jQuery);
