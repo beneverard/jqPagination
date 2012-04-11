@@ -11,7 +11,9 @@
 ## Changelog
 
 ### 1.1
-- Exposed get / set `max_page` and `current_page` options.
+- Feature: Exposed get / set `max_page` and `current_page` options.
+- Fixed: Added proper CSS gradients and fallback
+- Fixed: 'invalid assignment left-hand side' bug in Firefox.
 
 ### 1.0
 
