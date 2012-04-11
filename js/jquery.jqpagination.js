@@ -42,7 +42,7 @@
 
 		base.init = function () {
 
-			base.options = $.extend({}, $.jqPagination.defaultOptions, options);				
+			base.options = $.extend({}, $.jqPagination.defaultOptions, options);
 			
 			// if the user hasn't provided a max page number in the options try and find 
 			// the data attribute for it, if that cannot be found, use one as a max page number
@@ -64,7 +64,7 @@
 				base.options.current_page = base.$input.data('current-page');
 			}
 			
-			// remove the readonly attribute as JavaScript must be working by now ;-)			
+			// remove the readonly attribute as JavaScript must be working by now ;-)
 			base.$input.removeAttr('readonly');
 			
 			// set the initial input value
@@ -143,7 +143,7 @@
 						
 					case 'prev':
 					case 'previous':
-						page = current_page - 1;					
+						page = current_page - 1;
 						break;
 						
 					case 'next':
@@ -177,7 +177,7 @@
 			// update the input element
 			base.updateInput();
 			
-		}
+		};
 		
 		base.setMaxPage = function (max_page) {
 			
@@ -205,7 +205,7 @@
 			// update the input element
 			base.updateInput();
 			
-		}
+		};
 		
 		// ATTN this isn't really the correct name is it?
 		base.updateInput = function () {
@@ -232,7 +232,7 @@
 			page_string = page_string
 				.replace("{current_page}", page)
 				.replace("{max_page}", max_page);
-					   
+			
 			base.$input.val(page_string);
 		
 		};
@@ -261,7 +261,7 @@
 					next = max_page;
 				}
 				
-				// apply each page number to the link string, set it back to the element href attribute				
+				// apply each page number to the link string, set it back to the element href attribute
 				base.$el.find('a.first').attr('href', link_string.replace('{page_number}', '1'));
 				base.$el.find('a.prev, a.previous').attr('href', link_string.replace('{page_number}', previous));
 				base.$el.find('a.next').attr('href', link_string.replace('{page_number}', next));
@@ -289,7 +289,7 @@
 			
 			return false;
 
-		}
+		};
 
 		// Run initializer
 		base.init();
@@ -307,7 +307,8 @@
 	$.fn.jqPagination = function () {
 
 		// get any function parameters
-		var args = Array.prototype.slice.call(arguments);
+		var self = this,
+			args = Array.prototype.slice.call(arguments);
 
 		// if the first arg is the string 'option' we want to get or set an option
 		// note: we can only do this to a single element, and not a collection of elements
@@ -315,19 +316,19 @@
 		if (args[0] === 'option') {
 			
 			// if we're dealing with multiple elements, set this to the first element
-			if (this.length > 1) {
-				this = this.eq(0);
+			if (self.length > 1) {
+				self = self.eq(0);
 			}
 
-			var $plugin = $(this).data('jqPagination');
+			var $plugin = $(self).data('jqPagination');
 
 			return $plugin.option(args[1], args[2]);
 
 		}
 
 		// if we're not dealing with a get / set option, initialise plugin
-		this.each(function () {
-			(new $.jqPagination(this, args[0]));
+		self.each(function () {
+			(new $.jqPagination(self, args[0]));
 		});
 		
 	};
