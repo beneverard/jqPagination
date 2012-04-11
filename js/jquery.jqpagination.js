@@ -44,7 +44,7 @@
 
 			base.options = $.extend({}, $.jqPagination.defaultOptions, options);
 			
-			// if the user hasn't provided a max page number in the options try and find 
+			// if the user hasn't provided a max page number in the options try and find
 			// the data attribute for it, if that cannot be found, use one as a max page number
 			
 			if (base.options.max_page === null) {
@@ -113,10 +113,19 @@
 			
 			base.$el.find('a').live('click', function (event) {
 			
-				// for mac + windows (read: other), maintain the cmd + ctrl click for new tab
+				var $self = $(this);
+
+				// we don't want to do anything if we've clicked a disabled link
+				// return false so we stop normal link action btu also drop out of this event
+				
+				if ($self.hasClass('disabled')) {
+					return false;
+				}
+
+				// for maintainac + windows (read: other), maintain the cmd + ctrl click for new tab
 				if (!event.metaKey && !event.ctrlKey) {
 					event.preventDefault();
-					base.setPage($(this).data('action'));
+					base.setPage($self.data('action'));
 				}
 				
 			});
@@ -268,7 +277,18 @@
 				base.$el.find('a.last').attr('href', link_string.replace('{page_number}', max_page));
 				
 			}
-			
+
+			// set disable class on appropriate links
+			base.$el.find('a').removeClass('disabled');
+
+			if (current_page === max_page) {
+				base.$el.find('.next, .last').addClass('disabled');
+			}
+
+			if (current_page === 1) {
+				base.$el.find('.previous, .first').addClass('disabled');
+			}
+
 		};
 		
 		base.option = function (key, value) {
