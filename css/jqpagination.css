@@ -20,35 +20,29 @@
 	font-size: 16px;
 	outline: none;
 	vertical-align: middle;
-	
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, rgb(221,221,221)),
-		color-stop(1, rgb(243,243,243))
-	);
-	background-image: -moz-linear-gradient(
-		center bottom,
-		rgb(221,221,221) 0%,
-		rgb(243,243,243) 100%	
-	);
-	
+
+	background: #F3F3F3; /* Old browsers */
+	background: -moz-linear-gradient(top,  #F3F3F3 0%, #D3D3D3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F3F3F3), color-stop(100%,#D3D3D3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* IE10+ */
+	background: linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F3F3F3', endColorstr='#D3D3D3',GradientType=0 ); /* IE6-9 */
+
 }
 
 .pagination a:hover, .pagination a:focus, .pagination a:active {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, #CECECE),
-		color-stop(1, #E4E4E4)
-	);
-	background-image: -moz-linear-gradient(
-		center bottom,
-		#CECECE 0%,
-		#E4E4E4 100%	
-	);
+
+	background: #CECECE; /* Old browsers */
+	background: -moz-linear-gradient(top,  #E4E4E4 0%, #CECECE 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E4E4E4), color-stop(100%,#CECECE)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #E4E4E4 0%,#CECECE 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #E4E4E4 0%,#CECECE 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #E4E4E4 0%,#CECECE 100%); /* IE10+ */
+	background: linear-gradient(top,  #E4E4E4 0%,#CECECE 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E4E4E4', endColorstr='#CECECE',GradientType=0 ); /* IE6-9 */
+
 }
 
 .pagination a:first-child {
