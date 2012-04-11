@@ -11,13 +11,19 @@
 ## Changelog
 
 ### 1.1
-- Feature: Exposed get / set `max_page` and `current_page` options.
+- Feature: Exposed get / set `max_page` and `current_page` options (based on [Zikes' code](https://github.com/beneverard/jqPagination/pull/4))
+- Feature: Added disabled class (based on [Zikes' code](https://github.com/beneverard/jqPagination/pull/7))
 - Fixed: Added proper CSS gradients and fallback
-- Fixed: 'invalid assignment left-hand side' bug in Firefox.
+- Fixed: 'invalid assignment left-hand side' bug in Firefox
 
 ### 1.0
 
 - Initial release
+
+## Contributors
+
+- Ben Everard ([beneverard](http://github.com/beneverard))
+- Jason Hutchinson ([Zikes](http://github.com/Zikes))
 
 ### Copyright and license
 	 
