@@ -328,7 +328,7 @@
 
 		// if we're not dealing with a get / set option, initialise plugin
 		self.each(function () {
-			(new $.jqPagination(self, args[0]));
+			(new $.jqPagination(this, args[0]));
 		});
 		
 	};
