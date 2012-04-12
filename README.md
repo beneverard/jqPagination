@@ -10,6 +10,9 @@
 
 ## Changelog
 
+### 1.1.1
+- Fixed: Prevent `paged()` callback from firing on initialisation
+
 ### 1.1
 - Feature: Exposed get / set `max_page` and `current_page` options (based on [Zikes' code](https://github.com/beneverard/jqPagination/pull/4))
 - Feature: Added disabled class (based on [Zikes' code](https://github.com/beneverard/jqPagination/pull/7))

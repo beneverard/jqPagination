@@ -68,7 +68,10 @@
 			base.$input.removeAttr('readonly');
 			
 			// set the initial input value
-			base.updateInput();
+			// pass true to prevent paged callback form being fired
+			
+			base.updateInput(true);
+
 			
 			 //***************
 			// BIND EVENTS
@@ -217,7 +220,7 @@
 		};
 		
 		// ATTN this isn't really the correct name is it?
-		base.updateInput = function () {
+		base.updateInput = function (prevent_paged) {
 			
 			var current_page = parseInt(base.options.current_page, 10);
 							
@@ -227,8 +230,13 @@
 			// set the link href attributes
 			base.setLinks(current_page);
 			
-			// fire the callback function with the current page
-			base.options.paged(current_page);
+			// we may want to prevent the paged callback from being fired
+			if (prevent_paged !== true) {
+
+				// fire the callback function with the current page
+				base.options.paged(current_page);
+			
+			}
 			
 		};
 		
