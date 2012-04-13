@@ -76,10 +76,10 @@
 			 //***************
 			// BIND EVENTS
 			
-			base.$input.live('focus mouseup', function (event) {
+			base.$input.on('focus.jqPagination mouseup.jqPagination', function (event) {
 			
 				// if event === focus, select all text...
-				if (event.type === 'focusin') {
+				if (event.type === 'focus') {
 					var $self = $(this);
 					$self.val($self.data('current-page')).select();
 				}
@@ -91,7 +91,7 @@
 				
 			});
 			
-			base.$input.live('blur keydown', function (event) {
+			base.$input.on('blur.jqPagination keydown.jqPagination', function (event) {
 				
 				var $self			= $(this),
 					current_page	= parseInt(base.options.current_page, 10);
@@ -108,13 +108,13 @@
 				}
 
 				// only set the page is the event is focusout.. aka blur
-				if (event.type === 'focusout') {
+				if (event.type === 'blur') {
 					base.setPage($self.val());
 				}
 				
 			});
 			
-			base.$el.find('a').live('click', function (event) {
+			base.$el.on('click.jqPagination', 'a', function (event) {
 			
 				var $self = $(this);
 
@@ -299,23 +299,45 @@
 
 		};
 		
-		base.option = function (key, value) {
+		base.callMethod = function (method, key, value) {
 
-			// call the appropriate function for the desired key (read: option)
-			switch (key.toLowerCase()) {
-			
-				case 'current_page':
-					return base.setPage(value);
+			switch (method.toLowerCase()) {
+
+				case 'option':
+
+					// call the appropriate function for the desired key (read: option)
+					switch (method.toLowerCase()) {
 					
-				case 'max_page':
-					return base.setMaxPage(value);
-				
-			}
+						case 'current_page':
+							return base.setPage(value);
+							
+						case 'max_page':
+							return base.setMaxPage(value);
+						
+					}
 
-			// if we haven't already returned yet we must not be able to access the desired option
-			console.error('jqPagination: cannot get / set option ' + key);
-			
-			return false;
+					// if we haven't already returned yet we must not be able to access the desired option
+					console.error('jqPagination: cannot get / set option ' + key);
+					return false;
+
+					break;
+
+				case 'destroy':
+
+					base.$el
+						.off('.jqPagination')
+						.find('*')
+							.off('.jqPagination');
+
+					break;
+
+				default:
+
+					// the function name must not exist
+					console.error('jqPagination: method "' + method + '" does not exist');
+					return false;
+
+			}
 
 		};
 
@@ -338,10 +360,10 @@
 		var self = this,
 			args = Array.prototype.slice.call(arguments);
 
-		// if the first arg is the string 'option' we want to get or set an option
+		// if the first argument is a string call the desired function
 		// note: we can only do this to a single element, and not a collection of elements
 
-		if (args[0] === 'option') {
+		if (typeof args[0] === 'string') {
 			
 			// if we're dealing with multiple elements, set this to the first element
 			if (self.length > 1) {
@@ -350,11 +372,11 @@
 
 			var $plugin = $(self).data('jqPagination');
 
-			return $plugin.option(args[1], args[2]);
+			return $plugin.callMethod(args[0], args[1], args[2]);
 
 		}
 
-		// if we're not dealing with a get / set option, initialise plugin
+		// if we're not dealing with a method, initialise plugin
 		self.each(function () {
 			(new $.jqPagination(this, args[0]));
 		});
