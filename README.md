@@ -10,6 +10,13 @@
 
 ## Changelog
 
+### 1.2
+- Fixed: Added fallback for the `console` object methods
+- Improved: Now using `.on()` jQuery event handler
+  - Note: Updated jQuery to 1.7.2
+- Improved: Modified method handling
+- New: Added `destroy` method
+
 ### 1.1.1
 - Fixed: Prevent `paged()` callback from firing on initialisation
 
