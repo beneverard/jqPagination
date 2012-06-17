@@ -10,6 +10,9 @@
 
 ## Changelog
 
+### 1.2.1
+- Fixed: callMethod function was failing to call the desired function
+
 ### 1.2
 - Fixed: Added fallback for the `console` object methods
 - Improved: Now using `.on()` jQuery event handler

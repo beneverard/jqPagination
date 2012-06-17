@@ -306,7 +306,7 @@
 				case 'option':
 
 					// call the appropriate function for the desired key (read: option)
-					switch (method.toLowerCase()) {
+					switch (key.toLowerCase()) {
 					
 						case 'current_page':
 							return base.setPage(value);
