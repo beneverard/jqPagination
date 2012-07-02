@@ -10,6 +10,11 @@
 
 ## Changelog
 
+### 1.2.2
+- Fixed: Incorrect GitHub fork ribbon image url
+- Fixed: Added Google Analytics tracker code
+- Fixed: Initial input focus setting undefined value
+
 ### 1.2.1
 - Fixed: callMethod function was failing to call the desired function
 
