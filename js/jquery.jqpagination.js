@@ -77,11 +77,14 @@
 			// BIND EVENTS
 			
 			base.$input.on('focus.jqPagination mouseup.jqPagination', function (event) {
-			
+
 				// if event === focus, select all text...
 				if (event.type === 'focus') {
-					var $self = $(this);
-					$self.val($self.data('current-page')).select();
+
+					var current_page	= parseInt(base.options.current_page, 10);
+
+					$(this).val(current_page).select();
+
 				}
 			
 				// if event === mouse up, return false. Fixes Chrome bug
@@ -125,7 +128,7 @@
 					return false;
 				}
 
-				// for maintainac + windows (read: other), maintain the cmd + ctrl click for new tab
+				// for mac + windows (read: other), maintain the cmd + ctrl click for new tab
 				if (!event.metaKey && !event.ctrlKey) {
 					event.preventDefault();
 					base.setPage($self.data('action'));
