@@ -1,0 +1,28 @@
+{
+	"name": "jqpagination",
+	"version": "1.2.3",
+	"title": "jqPagination",
+	"author": {
+		"name": "Ben Everard",
+		"email": "hello@beneverard.co.uk",
+		"url": "https://github.com/beneverard/jqPagination"
+	},
+	"licenses": [
+		{
+			"type": "GPLv3",
+			"url": "https://raw.github.com/beneverard/jqPagination/master/LICENSE"
+		}
+	],
+	"dependencies": {
+		"jquery": "1.7.2"
+	},
+	"description": "jqPagination is a jQuery plugin that provides a newer method of pagination for your web site or application.",
+	"keywords": [
+		"jqpagination",
+		"pagination"
+	],
+	"homepage": "https://github.com/beneverard/jqPagination",
+	"demo": "http://beneverard.github.com/jqPagination/",
+	"download": "https://github.com/beneverard/jqPagination/archive/master.zip",
+	"bugs": "https://github.com/beneverard/jqPagination/issues"
+}
