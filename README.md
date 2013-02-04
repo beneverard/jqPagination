@@ -11,8 +11,9 @@
 ## Changelog
 
 ### 1.2.3
-- Fixed: Removed ObserverApp analytics code from demo
-- Fixed: Updated copyright date in demo
+- Demo: Removed ObserverApp analytics code from demo
+- Demo: Updated copyright date in demo
+- Demo: Updated feedback and support copy in demo
 
 ### 1.2.2
 - Fixed: Incorrect GitHub fork ribbon image url
