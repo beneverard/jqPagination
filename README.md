@@ -10,6 +10,9 @@
 
 ## Changelog
 
+### 1.2.3
+- Fixed: Removed ObserverApp analytics code from demo
+
 ### 1.2.2
 - Fixed: Incorrect GitHub fork ribbon image url
 - Fixed: Added Google Analytics tracker code
