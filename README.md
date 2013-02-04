@@ -10,10 +10,13 @@
 
 ## Changelog
 
-### 1.2.3
+### 1.2.4
 - Demo: Removed ObserverApp analytics code from demo
 - Demo: Updated copyright date in demo
 - Demo: Updated feedback and support copy in demo
+
+### 1.2.3
+- Improved: Added plugin manifest for jQuery plugins repo
 
 ### 1.2.2
 - Fixed: Incorrect GitHub fork ribbon image url
