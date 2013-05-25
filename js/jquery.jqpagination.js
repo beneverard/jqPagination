@@ -361,22 +361,22 @@
 
 		// get any function parameters
 		var self = this,
-			args = Array.prototype.slice.call(arguments);
+			args = Array.prototype.slice.call(arguments),
+			result = false;
 
 		// if the first argument is a string call the desired function
 		// note: we can only do this to a single element, and not a collection of elements
 
 		if (typeof args[0] === 'string') {
-			
-			// if we're dealing with multiple elements, set this to the first element
-			if (self.length > 1) {
-				self = self.eq(0);
-			}
 
-			var $plugin = $(self).data('jqPagination');
+			// if we're dealing with multiple elements, set for all
+			$.each(self, function(){
+				var $plugin = $(this).data('jqPagination');
 
-			return $plugin.callMethod(args[0], args[1], args[2]);
+				result = $plugin.callMethod(args[0], args[1], args[2]);
+			})
 
+			return result;
 		}
 
 		// if we're not dealing with a method, initialise plugin
