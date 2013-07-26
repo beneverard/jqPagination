@@ -55,6 +55,7 @@
 
 - Ben Everard ([beneverard](http://github.com/beneverard))
 - Jason Hutchinson ([Zikes](http://github.com/Zikes))
+- [m-hume](http://github.com/m-hume)
 
 ### Copyright and license
 	 
