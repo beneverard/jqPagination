@@ -327,9 +327,9 @@
 						result = base.setMaxPage(options.max_page, prevent_paged);
 					}
 
-					// if set_page property is set call setPage
-					if(options.set_page !== undefined){
-						result = base.setPage(options.set_page, prevent_paged);
+					// if current_page property is set call setPage
+					if(options.current_page !== undefined){
+						result = base.setPage(options.current_page, prevent_paged);
 					}
 
 					// if we've not got a result fire an error and return false
