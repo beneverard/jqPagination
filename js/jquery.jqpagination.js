@@ -138,7 +138,7 @@
 			
 		};
 		
-		base.setPage = function (page) {
+		base.setPage = function (page, prevent_paged) {
 			
 			// return current_page value if getting instead of setting
 			if (page === undefined) {
@@ -190,11 +190,11 @@
 			base.$input.data('current-page', page);
 			
 			// update the input element
-			base.updateInput();
+			base.updateInput( prevent_paged );
 			
 		};
 		
-		base.setMaxPage = function (max_page) {
+		base.setMaxPage = function (max_page, prevent_paged) {
 			
 			// return the max_page value if getting instead of setting
 			if (max_page === undefined) {
@@ -218,7 +218,7 @@
 			base.$input.data('max-page', max_page);
 				
 			// update the input element
-			base.updateInput();
+			base.updateInput( prevent_paged );
 			
 		};
 		
@@ -308,21 +308,34 @@
 
 				case 'option':
 
-					// call the appropriate function for the desired key (read: option)
-					switch (key.toLowerCase()) {
-					
-						case 'current_page':
-							return base.setPage(value);
-							
-						case 'max_page':
-							return base.setMaxPage(value);
-						
+					// set default object to trigger the paged event (legacy opperation)
+					var options = {'trigger': true},
+					result = false;
+
+					// if the key passed in is an object
+					if($.isPlainObject(key) && !value){
+						$.extend(options, key)
+					}
+					else{ // make the key value pair part of the default object
+						options[key] = value;
 					}
 
-					// if we haven't already returned yet we must not be able to access the desired option
-					console.error('jqPagination: cannot get / set option ' + key);
-					return false;
+					var prevent_paged = (options.trigger === false);
 
+					// if max_page property is set call setMaxPage
+					if(options.max_page !== undefined){
+						result = base.setMaxPage(options.max_page, prevent_paged);
+					}
+
+					// if set_page property is set call setPage
+					if(options.set_page !== undefined){
+						result = base.setPage(options.set_page, prevent_paged);
+					}
+
+					// if we've not got a result fire an error and return false
+					if( result === false ) console.error('jqPagination: cannot get / set option ' + key);
+					return result;
+					
 					break;
 
 				case 'destroy':
