@@ -176,8 +176,8 @@
 			page = parseInt(page, 10);
 			
 			// reject any invalid page requests
-			if (isNaN(page) || page < 1 || page > max_page || page === current_page) {
-			
+			if (isNaN(page) || page < 1 || page > max_page) {
+
 				// update the input element
 				base.setInputValue(current_page);
 				
