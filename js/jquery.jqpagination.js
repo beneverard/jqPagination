@@ -374,7 +374,7 @@
 				var $plugin = $(this).data('jqPagination');
 
 				result = $plugin.callMethod(args[0], args[1], args[2]);
-			})
+			});
 
 			return result;
 		}
