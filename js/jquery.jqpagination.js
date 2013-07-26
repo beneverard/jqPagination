@@ -1,7 +1,7 @@
 /*!
  * jqPagination, a jQuery pagination plugin (obviously)
  *
- * Copyright (C) 2011 Ben Everard
+ * Copyright (C) 2013 Ben Everard
  *
  * http://beneverard.github.com/jqPagination
  *
