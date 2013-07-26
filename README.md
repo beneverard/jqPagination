@@ -10,6 +10,11 @@
 
 ## Changelog
 
+### 1.3
+- Improved: Added functionality to pass multiple options to option method (based on [m-hume's code](https://github.com/beneverard/jqPagination/pull/20))
+- Fixed: Prevent the triggering of the updated calback on set option (based on [m-hume's code](https://github.com/beneverard/jqPagination/pull/20))
+- Improved: Seting the page to the current page no longer returns false
+
 ### 1.2.4
 - Demo: Removed ObserverApp analytics code from demo
 - Demo: Updated copyright date in demo
