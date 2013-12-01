@@ -16,7 +16,11 @@
   font-weight: bold;
   font-size: 16px;
   outline: none;
-  vertical-align: middle; }
+  vertical-align: middle;
+  background-color: #f3f3f3;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f3f3), color-stop(100%, lightgrey));
+  background-image: -webkit-linear-gradient(#f3f3f3, lightgrey);
+  background-image: linear-gradient(#f3f3f3, lightgrey); }
   .pagination a:hover, .pagination a:focus, .pagination a:active {
     background-color: #cecece;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e4e4e4), color-stop(100%, #cecece));

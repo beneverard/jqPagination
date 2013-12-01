@@ -19,6 +19,7 @@
 	font-size: 16px;
 	outline: none;
 	vertical-align: middle;
+	@include linear-gradient(#F3F3F3, #D3D3D3);
 	&:hover, &:focus, &:active {
 		@include linear-gradient(#E4E4E4, #CECECE, $fallback: #CECECE);
 	}
