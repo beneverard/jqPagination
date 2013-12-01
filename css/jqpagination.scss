@@ -4,8 +4,6 @@
 	float: left;
 	border: 1px solid #CDCDCD;
 	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
 }
 
 .pagination a {
@@ -32,14 +30,10 @@
 
 .pagination a:first-child {
 	border-radius: 2px 0 0 2px;
-	-moz-border-radius: 2px 0 0 2px;
-	-webkit-border-radius: 2px 0 0 2px;
 }
 
 .pagination a:last-child {
 	border-radius: 0 2px 2px 0;
-	-moz-border-radius: 0 2px 2px 0;
-	-webkit-border-radius: 0 2px 2px 0;
 }
 
 .pagination a {

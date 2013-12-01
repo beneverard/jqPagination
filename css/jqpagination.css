@@ -1,9 +1,7 @@
 .pagination {
   float: left;
   border: 1px solid #CDCDCD;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px; }
+  border-radius: 3px; }
 
 .pagination a {
   display: block;
@@ -32,14 +30,10 @@
     color: #A8A8A8; }
 
 .pagination a:first-child {
-  border-radius: 2px 0 0 2px;
-  -moz-border-radius: 2px 0 0 2px;
-  -webkit-border-radius: 2px 0 0 2px; }
+  border-radius: 2px 0 0 2px; }
 
 .pagination a:last-child {
-  border-radius: 0 2px 2px 0;
-  -moz-border-radius: 0 2px 2px 0;
-  -webkit-border-radius: 0 2px 2px 0; }
+  border-radius: 0 2px 2px 0; }
 
 .pagination a {
   border-right: 1px solid #CDCDCD;
