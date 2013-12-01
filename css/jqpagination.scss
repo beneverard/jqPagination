@@ -28,6 +28,7 @@
 	&.disabled, &.disabled:hover, &.disabled:focus, &.disabled:active {
 		@include linear-gradient(#F3F3F3, #D3D3D3);
 		color: #A8A8A8;
+		cursor: default;
 	}
 }
 

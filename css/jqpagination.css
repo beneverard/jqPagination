@@ -33,7 +33,8 @@
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f3f3), color-stop(100%, lightgrey));
     background-image: -webkit-linear-gradient(#f3f3f3, lightgrey);
     background-image: linear-gradient(#f3f3f3, lightgrey);
-    color: #A8A8A8; }
+    color: #A8A8A8;
+    cursor: default; }
 
 .pagination a:first-child {
   border: none;
