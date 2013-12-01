@@ -309,6 +309,11 @@
 
 				case 'option':
 
+					// if we're getting, immediately return the value
+					if (value === undefined) {
+						return base.options[key];
+					}
+
 					// set default object to trigger the paged event (legacy opperation)
 					var options = {'trigger': true},
 					result = false;
@@ -375,6 +380,7 @@
 
 		// get any function parameters
 		var self = this,
+			$self = $(self),
 			args = Array.prototype.slice.call(arguments),
 			result = false;
 
@@ -383,12 +389,19 @@
 
 		if (typeof args[0] === 'string') {
 
-			// if we're dealing with multiple elements, set for all
-			$.each(self, function(){
-				var $plugin = $(this).data('jqPagination');
+			// if we're getting, we can only get value for the first pagination element
+			if (args[2] === undefined) {
 
-				result = $plugin.callMethod(args[0], args[1], args[2]);
-			});
+				result = $self.first().data('jqPagination').callMethod(args[0], args[1]);
+
+			} else {
+
+				// if we're setting, set values for all pagination elements
+				$self.each(function(){
+					result = $(this).data('jqPagination').callMethod(args[0], args[1], args[2]);
+				});
+
+			}
 
 			return result;
 		}
