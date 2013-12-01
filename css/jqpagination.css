@@ -1,22 +1,24 @@
 .pagination {
-  float: left;
+  display: inline-block;
   border: 1px solid #CDCDCD;
   border-radius: 3px; }
 
 .pagination a {
   display: block;
   float: left;
-  height: 20px;
   width: 20px;
+  height: 20px;
+  outline: none;
+  border-right: 1px solid #CDCDCD;
+  border-left: 1px solid #CDCDCD;
   color: #555555;
+  vertical-align: middle;
   text-align: center;
   text-decoration: none;
-  font-family: Times, 'Times New Roman', Georgia, Palatino;
-  /* ATTN: need a better font stack */
   font-weight: bold;
   font-size: 16px;
-  outline: none;
-  vertical-align: middle;
+  font-family: Times, 'Times New Roman', Georgia, Palatino;
+  /* ATTN: need a better font stack */
   background-color: #f3f3f3;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f3f3), color-stop(100%, lightgrey));
   background-image: -webkit-linear-gradient(#f3f3f3, lightgrey);
@@ -34,31 +36,23 @@
     color: #A8A8A8; }
 
 .pagination a:first-child {
+  border: none;
   border-radius: 2px 0 0 2px; }
 
 .pagination a:last-child {
+  border: none;
   border-radius: 0 2px 2px 0; }
 
-.pagination a {
-  border-right: 1px solid #CDCDCD;
-  border-left: 1px solid #CDCDCD; }
-
-.pagination a:first-child {
-  border: none; }
-
-.pagination a:last-child {
-  border: none; }
-
 .pagination input {
-  border: none;
   float: left;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 120px;
   height: 20px;
   outline: none;
+  border: none;
   vertical-align: middle;
-  width: 120px;
-  padding: 0;
-  margin: 0; }
+  text-align: center; }
 
 /* gigantic class for demo purposes */
 .gigantic.pagination {
