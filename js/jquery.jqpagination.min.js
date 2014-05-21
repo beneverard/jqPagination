@@ -1,6 +1,6 @@
 /*!
  * jqPagination, a jQuery pagination plugin (obviously)
- * Version: 1.3 (26th July 2013)
+ * Version: 1.4 (26th July 2013)
  *
  * Copyright (C) 2013 Ben Everard
  *

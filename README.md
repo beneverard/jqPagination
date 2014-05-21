@@ -10,6 +10,13 @@
 
 ## Changelog
 
+### 1.4
+- Improved: Getting of plugin options
+- New: Added contributors file
+- Improved: Moved styles from LESS to SCSS
+- Improved: Tidied up repo HTML
+- Fixed: Re-ordered setting plugin options to prevent current page exceeding max pages (fixed by [wh](https://github.com/beneverard/jqPagination/pull/34))
+
 ### 1.3
 - Improved: Added functionality to pass multiple options to option method (based on [m-hume's code](https://github.com/beneverard/jqPagination/pull/20))
 - Fixed: Prevent the triggering of the updated calback on set option (based on [m-hume's code](https://github.com/beneverard/jqPagination/pull/20))
@@ -56,6 +63,7 @@
 - Ben Everard ([beneverard](http://github.com/beneverard))
 - Jason Hutchinson ([Zikes](http://github.com/Zikes))
 - [m-hume](http://github.com/m-hume)
+- Will Mernagh [wm](https://github.com/wm)
 
 ### Copyright and license
 	 
