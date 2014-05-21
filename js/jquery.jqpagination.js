@@ -310,7 +310,7 @@
 				case 'option':
 
 					// if we're getting, immediately return the value
-					if (value === undefined) {
+					if ( value === undefined && typeof key !== "object" ) {
 						return base.options[key];
 					}
 
