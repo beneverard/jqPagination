@@ -328,14 +328,14 @@
 
 					var prevent_paged = (options.trigger === false);
 
-					// if max_page property is set call setMaxPage
-					if(options.max_page !== undefined){
-						result = base.setMaxPage(options.max_page, prevent_paged);
-					}
-
 					// if current_page property is set call setPage
 					if(options.current_page !== undefined){
 						result = base.setPage(options.current_page, prevent_paged);
+					}
+
+					// if max_page property is set call setMaxPage
+					if(options.max_page !== undefined){
+						result = base.setMaxPage(options.max_page, prevent_paged);
 					}
 
 					// if we've not got a result fire an error and return false
