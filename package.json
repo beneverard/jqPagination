@@ -1,0 +1,34 @@
+{
+  "name": "jq-pagination",
+  "description": "A jQuery pagination plugin (obviously)",
+  "version": "1.4.1",
+  "author": "Ben Everard <hello@beneverard.co.uk> (http://beneverard.co.uk)",
+  "bugs": {
+    "url": "https://github.com/beneverard/jqPagination/issues"
+  },
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "files": [
+    "js/jquery.jqpagination.js",
+    "css/jqpagination.css"
+  ],
+  "homepage": "http://beneverard.github.io/jqPagination/",
+  "keywords": [
+    "ecosystem:jquery",
+    "jquery-plugin",
+    "pagination"
+  ],
+  "license": "GPL-3.0",
+  "main": "js/jquery.jqpagination.js",
+  "style": [
+    "css/jqpagination.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beneverard/jqPagination.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
