@@ -1,10 +1,9 @@
 {
 	"name": "jqpagination",
-	"version": "1.4",
+	"version": "1.4.1",
 	"title": "jqPagination",
 	"author": {
 		"name": "Ben Everard",
-		"email": "hello@beneverard.co.uk",
 		"url": "https://github.com/beneverard/jqPagination"
 	},
 	"licenses": [
