@@ -21,7 +21,18 @@
  *
  */
 
-(function ($) {
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+      // AMD. Register as an anonymous module.
+      define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
+      // Node/CommonJS
+      module.exports = factory(require('jquery'));
+  } else {
+      // Browser globals
+      factory(jQuery);
+  }
+}(function ($) {
 	"use strict";
 
 	$.jqPagination = function (el, options) {
@@ -413,7 +424,7 @@
 
 	};
 
-})(jQuery);
+}));
 
 // polyfill, provide a fallback if the console doesn't exist
 if (!console) {
